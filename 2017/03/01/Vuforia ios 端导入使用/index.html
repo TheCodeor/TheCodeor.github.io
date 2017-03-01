@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vuforia ios 端导入使用 | jadefan的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vuforia是一个AR的第三方sdk,有安卓，ios和unity平台。ios端的资料较少，我弄了几天总算把它弄到了自己的工程里面。首先下载SDK和例子https://developer.vuforia.com/downloads/sdkhttps://developer.vuforia.com/downloads/samples下载解压后，把例子的整个文件夹拖入SDK文件夹的samples文件夹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuforia ios 端导入使用">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/Vuforia ios 端导入使用/index.html">
+<meta property="og:site_name" content="jadefan的博客">
+<meta property="og:description" content="Vuforia是一个AR的第三方sdk,有安卓，ios和unity平台。ios端的资料较少，我弄了几天总算把它弄到了自己的工程里面。首先下载SDK和例子https://developer.vuforia.com/downloads/sdkhttps://developer.vuforia.com/downloads/samples下载解压后，把例子的整个文件夹拖入SDK文件夹的samples文件夹">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-57621abc225d9465.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-094e45284b125bbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-685b7bed211021ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-cc5dd9f2dc057300.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-bd9cdfa9efa1a88d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-4196e75b4738f23e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-c4a523e5d6d27216.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-604b9b595a2b7332.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-8a540d97a0b168f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-eab757694f97a37c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-e9907efb07cc4ac0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1366742-141cd417898dad17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-01T09:59:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vuforia ios 端导入使用">
+<meta name="twitter:description" content="Vuforia是一个AR的第三方sdk,有安卓，ios和unity平台。ios端的资料较少，我弄了几天总算把它弄到了自己的工程里面。首先下载SDK和例子https://developer.vuforia.com/downloads/sdkhttps://developer.vuforia.com/downloads/samples下载解压后，把例子的整个文件夹拖入SDK文件夹的samples文件夹">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1366742-57621abc225d9465.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="jadefan的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">jadefan的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">大菜鸟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Vuforia ios 端导入使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/Vuforia ios 端导入使用/" class="article-date">
+  <time datetime="2017-03-01T03:30:42.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vuforia ios 端导入使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Vuforia是一个AR的第三方sdk,有安卓，ios和unity平台。<br>ios端的资料较少，我弄了几天总算把它弄到了自己的工程里面。<br>首先下载SDK和例子<br><a href="https://developer.vuforia.com/downloads/sdk" target="_blank" rel="external">https://developer.vuforia.com/downloads/sdk</a><br><a href="https://developer.vuforia.com/downloads/samples" target="_blank" rel="external">https://developer.vuforia.com/downloads/samples</a><br>下载解压后，把例子的整个文件夹拖入SDK文件夹的samples文件夹中<br><img src="http://upload-images.jianshu.io/upload_images/1366742-57621abc225d9465.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>这时候官方提供的额demo就可以运行了。</p>
+<p>在官网申请开发者账号你会得到你的license key<br><img src="http://upload-images.jianshu.io/upload_images/1366742-094e45284b125bbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>打开demo工程找到这个文件的125行，填入这个key就可以使用demo提供的例子了</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1366742-685b7bed211021ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>demo的例子图片在media文件夹中</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1366742-cc5dd9f2dc057300.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>扫面这个文件夹中对应的例子图片就可以看到相应的效果！</p>
+<p>至于怎么导入自己的工程，我找了很久也没有找到官方提供的方法，一下都是自己琢磨的如有不对请大家指教！</p>
+<p>首先和例子一样，把自己的工程拖到sdk的samples文件夹下。然后需要导入这些库</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1366742-bd9cdfa9efa1a88d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>配置path路径<br><img src="http://upload-images.jianshu.io/upload_images/1366742-4196e75b4738f23e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1366742-c4a523e5d6d27216.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>因为官方的demo里面有很多类，我也没搞明白单独用该怎么用 所以用了个笨办法，我直接吧demo里面的<br><img src="http://upload-images.jianshu.io/upload_images/1366742-604b9b595a2b7332.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>这三个文件夹全部拖入工程中，因为里面有APPdelegate的代理，所以头文件肯定会报错，只要把这些APPdelegate的全局修改为你的APPdelegate名称即可。<br>APPdelegate里面还有两个地方需要改成和demo一直！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1366742-8a540d97a0b168f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1366742-eab757694f97a37c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>.m的文件后缀要修改成mm。</p>
+<p>使用具体某个功能时候直接把对应的工程的vc关联到xib即可。比如我测试的时cloud 识别功能。<br>对应这个vc<br><img src="http://upload-images.jianshu.io/upload_images/1366742-e9907efb07cc4ac0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>修改这个对应的class 来加载页面<br><img src="http://upload-images.jianshu.io/upload_images/1366742-141cd417898dad17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>云识别免费的账号是有1000次试用的。具体怎么上传图片什么的 英文好一点的都能在他们后台看懂，我就不啰嗦了！</p>
+<p>我想过直接拖那两个库文件进入工程使用，但是拖入后怎么修改路劲都找不到对应的头文件，这种放入SDK的文件的使用方法我还是第一次见到，不知道会不会出问题。如果大家有好的方法请告诉我下，非常感谢!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/01/Vuforia ios 端导入使用/" data-id="cizqsjkoo00042ahukpi7xvu9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/01/判断点是否在线段或直线上/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          判断点是否在线段或直线上
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/01/用 Masonry 输出系统提示的约束错误/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用 Masonry 输出系统提示的约束错误</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/Mac 安装 sublime text package control/">Mac 安装 sublime text package control</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/一边往上滑动一边加载数据/">一边往上滑动一边加载数据</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/判断点是否在线段或直线上/">判断点是否在线段或直线上</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/Vuforia ios 端导入使用/">Vuforia ios 端导入使用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/用 Masonry 输出系统提示的约束错误/">用 Masonry 输出系统提示的约束错误</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 JadeFan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
