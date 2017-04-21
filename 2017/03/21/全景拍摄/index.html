@@ -1,303 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+include mixins
 
-<!-- Head tag -->
-<head>
+extends partial/layout
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+block site_title
+    != page.title + " · " + config.title
 
-    <!--Description-->
-    
-        <meta name="description" content="随便写点什么">
-    
+block description
+    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
+    meta(name="description", content=desc)
 
-    <!--Author-->
-    
-        <meta name="author" content="JadeFan">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="全景图片拍摄"/>
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="随便写点什么" />
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="混了两年的混子"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article" />
-    
-
-    <!--Page Cover-->
-    
-
-    <meta name="twitter:card" content="summary" />
-    
-
-    <!-- Title -->
-    
-    <title>全景图片拍摄 - 混了两年的混子</title>
-
-    <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Google Analytics -->
-    
-
-
-</head>
-
-
-<body>
-
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<div class="w-100 bg-1 ph5-ns ph3 text-light">
-    
-    <nav class="db dt-l w-100 mw8 center border-box pv3">
-        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="混了两年的混子">
-            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="混了两年的混子">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/" 
-                    title="Home">
-                    Home
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/archives" 
-                    title="Archives">
-                    Archives
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/about.html" 
-                    title="About">
-                    About
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/contact.html" 
-                    title="Contact">
-                    Contact
-                </a>
-            
-        </div>
-    </nav>
-
-    <!-- Title -->
-    <div class="w-100 mw8 center vh-40 dt">
-        <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">全景图片拍摄</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-03-21</p>
-        </div>
-    </div>
-
-    <!-- Icon -->
-    <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-file-text-o"></i>
-    </div>
-</div>
-
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
-    <div class="content">
-        <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-                    <!-- Tags Vertical -->
-                    
-
-                    <!-- Main Post Content -->
-                    <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由多张照片拼接成的326度或者720的图片，在特定的浏览工具中可以看到全景效果。</p>
-<p>##学习<br><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=211&amp;extra=page%3D1" target="_blank" rel="external">一、初识全景摄影</a></p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=212&amp;extra=page%3D1" target="_blank" rel="external">二、如何调全景镜头节点（通用大众方法）</a></p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=213&amp;extra=page%3D1" target="_blank" rel="external">三、新人如何拍全景</a></p>
-<p><a href="http://list.youku.com/albumlist/show?id=29545520&amp;ascending=1&amp;page=1" target="_blank" rel="external">720全景拍摄系统教程</a></p>
-<h2 id="必要的工具"><a href="#必要的工具" class="headerlink" title="必要的工具"></a>必要的工具</h2><ol>
-<li>相机</li>
-<li>三脚架和云台</li>
-<li>图片合成软件</li>
-</ol>
-<h3 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h3><p>理论上任何相机都可以，但是单反最好。每张照片最少要有30%的重合，合成的全景效果最好。所以根据镜头的焦距不同，拍摄制作全景的照片数量也不一样。8mm 的鱼眼镜头只需要拍摄前后左右四张就可以合成。然后为了移除拍摄进照片的三脚架，还需要进行补地拍摄，再通过软件处理移除。</p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=39&amp;extra=page%3D1" target="_blank" rel="external">各焦距镜头一圈拍摄张数速查表（全画幅）</a></p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=40&amp;extra=page%3D1" target="_blank" rel="external">各焦距镜头一圈拍摄张数速查表（佳能C画幅 焦距成像系数…</a></p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=41&amp;extra=page%3D1" target="_blank" rel="external">各焦距镜头一圈拍摄张数速查表（尼康C画幅 焦距成像系数…</a></p>
-<p>拍摄前首先要找到相机节点，每种焦距的<strong>节点</strong>都会不一样。</p>
-<p>还需要把相机的自动模式关掉，否则会造成拍摄的照片有差别。</p>
-<p>我用的索尼16mm的镜头，合成一张720度的全景图一共拍了22张照片。水平方向每60度拍一张，一共六张。然后相机调整斜向上45度，转一圈，六张。斜向下45度，一圈，六张。每种焦距的倾斜度也不一样，具体多少我也没查到相关数据，不过根据自己的判断大概差不多就行。上，中，下18张拍完以后，把相机放大起始位置垂直90度向上拍一张天空，用于后期合成。然后垂直90度向下拍一张地面。然后，相机向下倾斜45度左右，移动三脚架，拍摄刚才三角所在位置的地面，用于后期补地合成。为了保证合成效果，可以找在称方向再拍一张补地照片。</p>
-<h3 id="三脚架和云台"><a href="#三脚架和云台" class="headerlink" title="三脚架和云台"></a>三脚架和云台</h3><p><a href="https://item.taobao.com/item.htm?spm=a1z10.3-c-s.w4002-14439540091.39.zRJBWb&amp;id=526464742498" target="_blank" rel="external">720云 八层纤维纯碳脚架+球形云台</a></p>
-<p><a href="https://item.taobao.com/item.htm?spm=a1z10.3-c-s.w4002-14439540091.30.zRJBWb&amp;id=525268743295" target="_blank" rel="external">720云 第四代全景云台 720云台 节点云台720度全景云台</a></p>
-<p>第四代全景云台可以方便的找节点，调整摄影角度和进行补地拍摄。通过上面不同的角度螺栓可以快速的找到需要旋转的角度。</p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=208&amp;extra=page%3D1" target="_blank" rel="external">720云台产品说明书</a></p>
-<p><a href="http://bbs.720yun.com/forum.php?mod=viewthread&amp;tid=1176&amp;extra=page%3D1" target="_blank" rel="external">720云台节点调节视频教程</a></p>
-<h3 id="图片合成软件"><a href="#图片合成软件" class="headerlink" title="图片合成软件"></a>图片合成软件</h3><p>拍摄完照片后就需要进行合成了。推荐使用<a href="http://www.ptgui.com/" target="_blank" rel="external">PTGUI</a>功能强大，使用简单的软件。把拍摄好的照片拖进软件中就可以方便的拼接全景图，大部分照片的相似点软件可以自动找出来。无法自动识别的也可以手动添加相似点提高合成后的全景图效果。</p>
-<p>photoshop好像也可以，但是我没试。</p>
-<p><a href="http://ggnome.com/pano2vr" target="_blank" rel="external">pano2vr</a>可以预览生产的全景照片，在照片上添加热点和标记。并导出HTML5或者flash等格式的文件。</p>
-<p><a href="http://client-news.720yun.com/client/index.html" target="_blank" rel="external">720yun客户端工具</a>和上面的差不多，国产的。</p>
-<p><a href="http://v.youku.com/v_show/id_XMTY0NDczNzcxMg==.html?from=s1.8-1-1.2&amp;spm=a2h0k.8191407.0.0" target="_blank" rel="external">全景图片的拼接 ptgui基础教程 </a></p>
-<p><a href="http://v.youku.com/v_show/id_XMTcxOTAyMTI0OA==.html?from=s1.8-1-1.2&amp;spm=a2h0k.8191407.0.0" target="_blank" rel="external">PTGUI全景图片拼接视频讲解</a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一张全景图的制作一般是,拍摄照片然后用ptgui合成全景图，用ps对生成的图片进行优化，pano2vr转换成需要的格式。</p>
-<p><a href="http://study.163.com/course/introduction/634004.htm#/courseDetail" target="_blank" rel="external">Pano2VR 全景设计</a>收费教程</p>
-
-                    
-                    <!-- Tags Bottom -->
-                    
-
-                    <!-- Comments -->
-                    
-
-
-
-                </div>
-                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
-                    
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 1: About -->
-                    <div class="mt5 mt0-l">
-    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
-        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
-            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="JadeFan">
-        </div>
-        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
-            My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region.
-        </div>
-    </article>
-</div>
-
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 2: Categories -->
-                    
-
-                    <!-- Widget 3: Recent Posts -->
-                    <div class="mt5 tc tl-l">
-    <h3>Récemment</h3>
-    
-        <p>
-            <a href="/2017/04/20/iOS的一些面试题/">iOS一些面试题</a>
-        </p>
-    
-        <p>
-            <a href="/2017/03/21/全景拍摄/">全景图片拍摄</a>
-        </p>
-    
-        <p>
-            <a href="/2017/03/03/Mac 文件夹操作/">Mac 文件夹操作</a>
-        </p>
-    
-        <p>
-            <a href="/2017/03/01/Mac 安装 sublime text package control/">Mac 安装 sublime text package control</a>
-        </p>
-    
-        <p>
-            <a href="/2017/03/01/IOS 导航栏 设置半透明 跳转黑边的问题/">IOS 导航栏 设置半透明 跳转黑边的问题</a>
-        </p>
-    
-</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Footer -->
-<div class="bg-1 ph2 ph5-ns pv5">
-        <div class="mv8">
-            <div class="center tc">
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://dribbble.com/" target="_blank">
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.behance.net/" target="_blank">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://500px.com/" target="_blank">
-                            <i class="fa fa-500px"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </div>
-                
-            </div>
-            <div class="f6 f5-ns center tc white pt5 fw3">
-                @Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-            </div>
-        </div>
-    </div>
-
-<!-- After Footer -->
-<!-- Disqus Comments -->
-
-
-
-</body>
-
-</html>
+block content
+  .autopagerize_page_element: .content: .post-page
+    include mixins
+    +make_post(page, true)
+    .share
+      .evernote 
+        a.fa.fa-bookmark(href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();", ref="nofollow", target="_blank")
+      .weibo 
+        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
+      .twitter 
+        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
+    - var prev = page.prev ? page.prev.path : false;
+    - var next = page.next ? page.next.path : false; 
+    .pagination
+      ul.clearfix
+        if prev
+          li.pre.pagbuttons
+            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
+        if next
+          li.next.pagbuttons
+            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
+    include partial/comments
